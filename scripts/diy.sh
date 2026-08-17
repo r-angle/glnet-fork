@@ -11,8 +11,9 @@ BOARDD=target/linux/mediatek/filogic/base-files/etc/board.d/02_network
 FILOGIC_MK=target/linux/mediatek/image/filogic.mk
 KCFG=target/linux/mediatek/filogic/config-6.12
 
-# --- 1. Graft the single GL device-support commit (PR #24237 head) ---------
-echo ">> Grafting GL-MT5000 device support (PR #24237) onto openwrt-25.12"
+# --- 1. Graft the pinned GL device-support commit from PR #24237 -----------
+# PR #24237 is currently unmerged; 2a0f793 is its MT5000 support commit.
+echo ">> Grafting GL-MT5000 device support (PR #24237 commit $GL_DEVICE_COMMIT) onto openwrt-25.12"
 git config user.email build@local
 git config user.name mt5000-build
 git remote add glinet "$GL_DEVICE_REPO" 2>/dev/null || true
