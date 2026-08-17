@@ -38,7 +38,9 @@ jobs:
           sudo chown "$USER:$USER" "$OPENWRT_PATH"
           git clone --depth 1 -b "$REPO_BRANCH" "$REPO_URL" "$OPENWRT_PATH"
           cd "$OPENWRT_PATH"
-          echo "HEAD: $(git rev-parse --short HEAD) on $REPO_BRANCH"
+#          # echo "HEAD: $(git rev-parse --short HEAD) on $REPO_BRANCH"
+          echo "OpenWrt HEAD: $(git rev-parse HEAD)"
+          echo "OpenWrt branch: $REPO_BRANCH"
 
       - name: Cache downloads & ccache
         uses: actions/cache@v4
