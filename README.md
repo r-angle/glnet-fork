@@ -1,3 +1,5 @@
+# forked repo.
+
 # gl-mt5000-openwrt
 
 A **clean, minimal** build of **official OpenWrt 25.12** (kernel 6.12) for the
