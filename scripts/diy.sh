@@ -12,12 +12,13 @@ FILOGIC_MK=target/linux/mediatek/image/filogic.mk
 KCFG=target/linux/mediatek/filogic/config-6.12
 
 # --- 1. Graft the pinned GL device-support commit from PR #24237 -----------
-# PR #24237 is currently unmerged; 2a0f793 is its MT5000 support commit.
+# PR #24237 is currently unmerged. Fetch its mt5000 branch, then
+# git cherry-pick the specific PR commit pinned by GL_DEVICE_COMMIT.
 echo ">> Grafting GL-MT5000 device support (PR #24237 from commit $GL_DEVICE_COMMIT) onto openwrt-25.12"
 git config user.email build@local
 git config user.name mt5000-build
 git remote add glinet "$GL_DEVICE_REPO" 2>/dev/null || true
-git fetch --depth 3 glinet "$GL_DEVICE_COMMIT"
+git fetch --depth 3 glinet mt5000
 git cherry-pick -n "$GL_DEVICE_COMMIT" || { echo ">> ERROR: graft cherry-pick failed for GL.iNet commit $GL_DEVICE_COMMIT (openwrt-25.12 drift?)"; git cherry-pick --abort 2>/dev/null || true; exit 1; }
 echo ">> Applied GL.iNet MT5000 support commit: $GL_DEVICE_COMMIT"
 test -f target/linux/mediatek/dts/mt7987a-gl-mt5000.dts || { echo ">> ERROR: DTS missing after graft"; exit 1; }
