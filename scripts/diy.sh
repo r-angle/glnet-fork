@@ -13,7 +13,7 @@ KCFG=target/linux/mediatek/filogic/config-6.12
 
 # --- 1. Graft the pinned GL device-support commit from PR #24237 -----------
 # PR #24237 is currently unmerged; 2a0f793 is its MT5000 support commit.
-echo ">> Grafting GL-MT5000 device support (PR #24237 commit $GL_DEVICE_COMMIT) onto openwrt-25.12"
+echo ">> Grafting GL-MT5000 device support (PR #24237 from commit $GL_DEVICE_COMMIT) onto openwrt-25.12"
 git config user.email build@local
 git config user.name mt5000-build
 git remote add glinet "$GL_DEVICE_REPO" 2>/dev/null || true
@@ -98,9 +98,9 @@ mkdir -p files/etc/uci-defaults
 cat > files/etc/uci-defaults/99-gl-mt5000 <<'UCI'
 #!/bin/sh
 uci -q batch <<-EOF
-	set system.@system[0].hostname='GL-MT5000'
+	set system.@system[0].hostname=''
 	set system.@system[0].timezone='WET0WEST,M3.5.0/1,M10.5.0'
-	set system.@system[0].zonename='Europe/Lisbon'
+	set system.@system[0].zonename='UTC'
 	commit system
 EOF
 exit 0
