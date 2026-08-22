@@ -1,3 +1,4 @@
+[![Build OpenWrt to contain device driver (Ethernet switch rtl8366ub (DSA))](https://github.com/r-angle/glnet-fork/actions/workflows/build.yml/badge.svg?branch=main_old)](https://github.com/r-angle/glnet-fork/actions/workflows/build.yml)
 #
 This was forked from another's repo to allow for changes.
 
